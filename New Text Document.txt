@@ -1,0 +1,72 @@
+#include<iostream>
+using namespace std;
+class complex
+{
+    float realp,imagp;
+public:
+    complex()
+    {
+        realp=0;
+        imagp=0;
+    }
+        complex operator+(complex &);
+        complex operator*(complex &);
+        complex(float,float);
+        friend istream &operator>>(istream &,complex &);
+        friend ostream &operator<<(ostream &,complex &);
+};
+complex::complex(float x, float y)
+{
+    realp=x;
+    imagp=y;
+}
+istream &operator>>(istream &cin,complex &c)
+{
+    cout<<"enter real part of complex number :";
+    cin>>c.realp;
+    cout<<"\n enter imaganry part of complex number :";
+    cin>>c.imagp;
+    return cin;
+}
+ostream &operator<<(ostream &cout, complex &c)
+{
+    cout<<c.realp<<"+"<<c.imagp<<"i";
+    cout<<endl;
+    return cout;
+}
+
+complex complex::operator+(complex &c)
+{
+    complex temp;
+    temp.realp=realp + c.realp;
+    temp.imagp=imagp +c.imagp;
+    return temp;
+}
+
+complex complex::operator *(complex &c)
+{
+    complex mul;
+    mul.realp=(realp*c.realp)-(imagp*c.imagp);
+    mul,imagp=(imagp*c.realp)+(realp*c.imagp);
+    return mul;
+}
+int main()
+{
+    complex c1,c2,c3;
+    cout<<"complex no example os:"<<c3;
+    cout<<"enter complex no 1:\n";
+    cin>>c1;
+    cout<<"enter complex no 2:\n";
+    cin>>c2;
+    cout<<"\n enter complex no 1:";
+    cin>>c1;
+    cout<<"enter complex no 2";
+    cin>>c2;
+    cout <<"\n additiom of two complex number is :";
+    c3=c1+c2;
+    cout<<c3;
+    cout<<"\n multiolication of two complex number is :";
+    c3=c1*c2;
+    cout<<c3;
+    return 0;
+}
